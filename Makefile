@@ -44,9 +44,20 @@ pdf: markdown
 	pandoc -s $(filename).md -o $(filename).pdf \
 		--title-prefix $(title) \
 		--normalize \
+        -V geometry:"papersize={5.5in,8.5in}, top=1cm, bottom=1cm, left=1cm, right=1cm" \
 		--smart \
 		--toc \
 		--latex-engine=`which xelatex` 
+
+tex: markdown
+	pandoc -s $(filename).md -o $(filename).tex \
+		--title-prefix $(title) \
+		--normalize \
+        -V geometry:"papersize={5.5in,8.5in}, top=1cm, bottom=1cm, left=1cm, right=1cm" \
+		--smart \
+		--toc \
+		--latex-engine=`which xelatex` 
+
 
 mobi: epub
 	# Download: http://www.amazon.com/gp/feature.html?ie=UTF8&docId=1000765211
